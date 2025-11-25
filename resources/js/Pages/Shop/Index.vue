@@ -1,10 +1,19 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Link } from '@inertiajs/vue3';
+import { useCart } from '@/Composables/useCart';
 
 defineProps({
     productos: Array,
 });
+
+const { addToCart, openCart } = useCart();
+
+const handleAddToCart = (producto) => {
+    addToCart(producto);
+    // Opcionalmente abrir el carrito automáticamente
+    openCart();
+};
 </script>
 
 <template>
@@ -28,12 +37,15 @@ defineProps({
                             <p class="text-gray-600 mt-1">Categoría: {{ producto.categoria }}</p>
                             
                             <div class="mt-4 flex items-center justify-between">
-                                <span class="text-xl font-bold text-gray-900">${{ producto.precio_unitario }}</span>
+                                <span class="text-xl font-bold text-gray-900">Bs. {{ producto.precio_unitario }}</span>
                             </div>
                         </div>
 
                         <div class="p-4 bg-gray-50 border-t border-gray-100">
-                            <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded transition duration-150">
+                            <button 
+                                @click="handleAddToCart(producto)"
+                                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded transition duration-150"
+                            >
                                 Agregar al Carrito
                             </button>
                         </div>

@@ -7,6 +7,8 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import CartIcon from '@/Components/CartIcon.vue';
+import CartSidebar from '@/Components/CartSidebar.vue';
 
 defineProps({
     title: String,
@@ -75,6 +77,11 @@ const logout = () => {
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
+                            <!-- Icono del Carrito (solo para clientes) -->
+                            <div v-if="$page.props.auth.user.current_team && $page.props.auth.user.current_team.name === 'Cliente'" class="me-3">
+                                <CartIcon />
+                            </div>
+
                             <div class="ms-3 relative">
                                 <!-- Teams Dropdown -->
                                 <Dropdown v-if="$page.props.jetstream.hasTeamFeatures" align="right" width="60">
@@ -229,5 +236,8 @@ const logout = () => {
                 <slot />
             </main>
         </div>
+
+        <!-- Carrito Sidebar -->
+        <CartSidebar />
     </div>
 </template>
