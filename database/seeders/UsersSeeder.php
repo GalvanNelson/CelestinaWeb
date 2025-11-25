@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 use App\Models\User;
 use App\Models\Team;
+use App\Models\TeamUser;
 
 class UsersSeeder extends Seeder
 {
@@ -24,7 +25,7 @@ class UsersSeeder extends Seeder
         ]);        
         Team::insert([
             'user_id' => '1',
-            'name' => 'Erick-Team',
+            'name' => 'Propietario',
             'personal_team' => 'true',
         ]);
         User::insert([
@@ -34,7 +35,17 @@ class UsersSeeder extends Seeder
         ]);
         Team::insert([
             'user_id' => '2',
-            'name' => 'Evans-Team',
+            'name' => 'Vendedor',
+            'personal_team' => 'true',
+        ]);
+         User::insert([
+            'name' => 'Fabian Galvan',
+            'email' => 'fabian@gmail.com',
+            'password' => bcrypt('12345678'),
+        ]);
+        Team::insert([
+            'user_id' => '3',
+            'name' => 'Cliente',
             'personal_team' => 'true',
         ]);
     }

@@ -46,14 +46,31 @@ const logout = () => {
                                 </Link>
                             </div>
 
-                            <!-- Navigation Links -->
+                            <!-- Navigation Links -->                            
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
-                                <NavLink :href="route('user.index')" :active="route().current('user.index')">
-                                    Usuarios
-                                </NavLink>
+
+                                <template v-if="$page.props.auth.user.current_team && $page.props.auth.user.current_team.name === 'Propietario'">
+                                    <NavLink :href="route('user.index')" :active="route().current('user.index')">
+                                        Usuarios
+                                    </NavLink>
+                                </template>
+
+                                <template v-if="$page.props.auth.user.current_team && $page.props.auth.user.current_team.name === 'Vendedor'">
+                                    <NavLink :href="route('productos.index')" :active="route().current('productos.index')">
+                                        Ventas
+                                    </NavLink>
+                                </template>
+
+                                <template v-if="$page.props.auth.user.current_team && $page.props.auth.user.current_team.name === 'Cliente'">
+                                    <NavLink :href="route('soporte.tickets')" :active="route().current('soporte.tickets')">
+                                        Tickets
+                                    </NavLink>
+                                </template>
+
                             </div>
                         </div>
 
