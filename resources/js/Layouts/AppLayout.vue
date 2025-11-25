@@ -66,8 +66,8 @@ const logout = () => {
                                 </template>
 
                                 <template v-if="$page.props.auth.user.current_team && $page.props.auth.user.current_team.name === 'Cliente'">
-                                    <NavLink :href="route('soporte.tickets')" :active="route().current('soporte.tickets')">
-                                        Tickets
+                                    <NavLink :href="route('shop.index')" :active="route().current('shop.index')">
+                                        Catálogo
                                     </NavLink>
                                 </template>
 

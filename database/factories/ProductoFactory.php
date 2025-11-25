@@ -18,7 +18,9 @@ class ProductoFactory extends Factory
     {
         return [
             'nombre_producto' => $this->faker->words(3, true), // Crea un nombre de 3 palabras
-            'imagen' => $this->faker->imageUrl(640, 480, 'products', true), // URL de imagen falsa
+            //'imagen' => $this->faker->imageUrl(640, 480, 'products', true), // URL de imagen falsa
+             // Usamos la URL constante que pediste
+            'imagen' => 'https://images.icon-icons.com/2570/PNG/512/image_icon_153794.png',
             'precio_unitario' => $this->faker->randomFloat(2, 10, 50), // Precio entre 10.00 y 50.00
             
             // Asumimos que estos son IDs. Faker pondrá números al azar entre 1 y 10.

@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\User;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\ShopController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -38,8 +39,14 @@ Route::middleware([
         Route::get('/dashboard/reportes', function () { return 'Reportes de Ventas'; });
     });
 
-    // --- RUTAS PARA EL TEAM 'Soporte' ---
-    Route::middleware(['check.team:Soporte'])->group(function () {
-        Route::get('/soporte/tickets', function () { return 'Lista de Tickets'; });
+    // --- RUTAS PARA EL TEAM 'Cliente' ---
+    Route::middleware(['check.team:Cliente'])->group(function () {
+        // Ruta principal del catálogo
+        Route::get('/dashboard/catalogo', [ShopController::class, 'index'])->name('shop.index');
+
+        // (Opcional) Ruta para ver detalle de un producto
+        Route::get('/dashboard/catalogo/{producto}', [ShopController::class, 'show'])->name('shop.show');
+
+        Route::get('/dashboard/tickets', function () { return 'Lista de Tickets'; });
     });
 });
