@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('callbacks', function (Blueprint $table) {
-            $table->id("PedidoID")->primary();
+        Schema::create('pedidos', function (Blueprint $table) {                        
+            $table->string('PedidoID')->primary();
             $table->date("Fecha");        
             $table->time("Hora");    
             $table->string("MetodoPago");
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('callbacks');
+        Schema::dropIfExists('pedidos');
     }
 };
