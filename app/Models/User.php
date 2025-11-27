@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\TeamUser;
 
 class User extends Authenticatable
 {
@@ -53,6 +54,7 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'roles',
     ];
 
     /**
@@ -66,5 +68,28 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Accessor: roles assigned to the user via team memberships.
+     * Returns an array of role names like ['propietario', 'vendedor', 'cliente'].
+     * This reads from the pivot table 'team_user' to avoid requiring
+     * relationships to be preloaded.
+     *
+     * @return array<int, string>
+     */
+    public function getRolesAttribute(): array
+    {
+        try {
+            $roles = TeamUser::where('user_id', $this->id)
+                ->pluck('role')
+                ->unique()
+                ->values()
+                ->toArray();
+
+            return $roles ?: [];
+        } catch (\Throwable $e) {
+            return [];
+        }
     }
 }
