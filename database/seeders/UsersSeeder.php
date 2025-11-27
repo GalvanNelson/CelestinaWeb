@@ -18,35 +18,53 @@ class UsersSeeder extends Seeder
     {
         User::truncate();
         Team::truncate();
+
+        Team::insert([
+            'user_id' => '1',
+            'name' => 'propietario',
+            'personal_team' => 'true',
+        ]);
+        Team::insert([
+            'user_id' => '2',
+            'name' => 'vendedor',
+            'personal_team' => 'true',
+        ]);
+        Team::insert([
+            'user_id' => '3',
+            'name' => 'cliente',
+            'personal_team' => 'true',
+        ]);
+
         User::insert([
             'name' => 'Erwin Erick Ureña Inarra',
             'email' => 'ericksapiens@gmail.com',
             'password' => bcrypt('12345678'),
-        ]);        
-        Team::insert([
-            'user_id' => '1',
-            'name' => 'Propietario',
-            'personal_team' => 'true',
         ]);
         User::insert([
             'name' => 'Evans Balcazar Veizaga',
             'email' => 'evansbv@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
-        Team::insert([
-            'user_id' => '2',
-            'name' => 'Vendedor',
-            'personal_team' => 'true',
-        ]);
-         User::insert([
+        User::insert([
             'name' => 'Fabian Galvan',
             'email' => 'fabian@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
-        Team::insert([
+
+        TeamUser::insert([
+            'user_id' => '1',
+            'team_id' => '1',
+            'role' => 'propietario',
+        ]);
+        TeamUser::insert([
+            'user_id' => '2',
+            'team_id' => '2',
+            'role' => 'vendedor',
+        ]);
+        TeamUser::insert([
             'user_id' => '3',
-            'name' => 'Cliente',
-            'personal_team' => 'true',
+            'team_id' => '3',
+            'role' => 'cliente',
         ]);
     }
 }

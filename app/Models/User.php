@@ -46,10 +46,6 @@ class User extends Authenticatable
         'current_team_id',
     ];
 
-    public function setPasswordAttribute($value){
-        $this->attributes["password"]= Hash::make($value);
-    }
-
     /**
      * The accessors to append to the model's array form.
      *

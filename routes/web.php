@@ -29,18 +29,18 @@ Route::middleware([
 
     // --- RUTAS PARA EL TEAM 'Administradores' ---
     // Solo entra si el usuario tiene seleccionado el equipo 'Propietario'
-    Route::middleware(['check.team:Propietario'])->group(function () {
+    Route::middleware(['check.team:propietario'])->group(function () {
         Route::resource('dashboard/user', UserController::class);
     });
 
     // --- RUTAS PARA EL TEAM 'Ventas' ---
-    Route::middleware(['check.team:Vendedor'])->group(function () {
+    Route::middleware(['check.team:vendedor'])->group(function () {
         Route::resource('/dashboard/productos', ProductoController::class);
         Route::get('/dashboard/reportes', function () { return 'Reportes de Ventas'; });
     });
 
     // --- RUTAS PARA EL TEAM 'Cliente' ---
-    Route::middleware(['check.team:Cliente'])->group(function () {
+    Route::middleware(['check.team:cliente'])->group(function () {
         // Ruta principal del catálogo
         Route::get('/dashboard/catalogo', [ShopController::class, 'index'])->name('shop.index');
 
