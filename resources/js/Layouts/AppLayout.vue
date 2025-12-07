@@ -19,15 +19,8 @@ defineProps({
 const showingNavigationDropdown = ref(false);
 const { applyTheme, cleanup } = useTheme();
 
-// Debug: Mostrar los roles en la consola
 onMounted(() => {
-    const page = usePage();
     applyTheme();
-    console.log('=== DEBUG ROLES ===');
-    console.log('Auth:', page.props.auth);
-    console.log('User:', page.props.auth?.user);
-    console.log('Roles:', page.props.auth?.user?.roles);
-    console.log('==================');
 });
 
 onUnmounted(() => {
@@ -101,6 +94,13 @@ const logout = () => {
                             <!-- Icono del Carrito (solo para clientes) -->
                             <div v-if="$page.props.auth?.user?.roles?.includes('cliente')" class="me-3">
                                 <CartIcon />
+                            </div>
+
+                            <!-- Mostrar rol del usuario -->
+                            <div class="flex items-center gap-2 px-3 py-2 rounded-md bg-bg-secondary">
+                                <span class="text-xs font-semibold uppercase text-color-primary">
+                                    {{ $page.props.auth?.user?.roles?.[0] || 'usuario' }}
+                                </span>
                             </div>
 
                             <!-- Teams Dropdown removed - using role-based access instead -->
@@ -209,6 +209,13 @@ const logout = () => {
 
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-bg-secondary">
+                        <!-- Mostrar rol del usuario en móvil -->
+                        <div class="px-4 py-2 mb-3 bg-bg-secondary rounded-md">
+                            <span class="text-xs font-semibold uppercase text-color-primary">
+                                Rol: {{ $page.props.auth?.user?.roles?.[0] || 'usuario' }}
+                            </span>
+                        </div>
+
                         <div class="flex items-center px-4">
                             <div v-if="$page.props.jetstream.managesProfilePhotos" class="shrink-0 me-3">
                                 <img class="size-10 rounded-full object-cover" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.name">
