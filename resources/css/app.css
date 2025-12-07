@@ -2,19 +2,261 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==================== SISTEMA DE TEMAS ==================== */
+
+/* Tema por defecto (Jóvenes Día) */
+:root {
+    /* Colores principales */
+    --color-primary: #3b82f6;
+    --color-primary-dark: #2563eb;
+    --color-secondary: #8b5cf6;
+    --color-accent: #ec4899;
+    
+    /* Fondos */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f3f4f6;
+    --bg-card: #ffffff;
+    
+    /* Textos */
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-inverse: #ffffff;
+    
+    /* Tamaño de fuente base */
+    --font-size-base: 16px;
+    --font-size-small: 14px;
+    --font-size-large: 18px;
+    --font-size-xlarge: 20px;
+    
+    /* Espaciado */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    
+    /* Bordes y sombras */
+    --border-radius: 0.5rem;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================== TEMA NIÑOS ==================== */
+[data-theme="kids"] {
+    --color-primary: #fbbf24;
+    --color-primary-dark: #f59e0b;
+    --color-secondary: #f472b6;
+    --color-accent: #34d399;
+    
+    --bg-primary: #fef3c7;
+    --bg-secondary: #fde68a;
+    --bg-card: #fffbeb;
+    
+    --text-primary: #78350f;
+    --text-secondary: #92400e;
+    --text-inverse: #ffffff;
+    
+    --border-radius: 1rem;
+    --shadow: 0 4px 6px rgba(251, 191, 36, 0.3);
+    --shadow-lg: 0 20px 25px rgba(251, 191, 36, 0.3);
+}
+
+/* ==================== TEMA JÓVENES ==================== */
+[data-theme="young"] {
+    --color-primary: #3b82f6;
+    --color-primary-dark: #2563eb;
+    --color-secondary: #8b5cf6;
+    --color-accent: #ec4899;
+    
+    --bg-primary: #ffffff;
+    --bg-secondary: #f3f4f6;
+    --bg-card: #ffffff;
+    
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-inverse: #ffffff;
+}
+
+/* ==================== TEMA ADULTOS ==================== */
+[data-theme="adults"] {
+    --color-primary: #059669;
+    --color-primary-dark: #047857;
+    --color-secondary: #0891b2;
+    --color-accent: #7c3aed;
+    
+    --bg-primary: #f9fafb;
+    --bg-secondary: #e5e7eb;
+    --bg-card: #ffffff;
+    
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --text-inverse: #ffffff;
+    
+    --border-radius: 0.25rem;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================== MODO NOCHE ==================== */
+[data-mode="night"][data-theme="kids"] {
+    --bg-primary: #1e1b4b;
+    --bg-secondary: #312e81;
+    --bg-card: #3730a3;
+    
+    --text-primary: #fef3c7;
+    --text-secondary: #fde68a;
+    
+    --color-primary: #fcd34d;
+    --color-primary-dark: #fbbf24;
+}
+
+[data-mode="night"][data-theme="young"] {
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --bg-card: #374151;
+    
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    
+    --color-primary: #60a5fa;
+    --color-primary-dark: #3b82f6;
+}
+
+[data-mode="night"][data-theme="adults"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #334155;
+    
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    
+    --color-primary: #10b981;
+    --color-primary-dark: #059669;
+}
+
+/* ==================== TAMAÑOS DE FUENTE ==================== */
+[data-font-size="small"] {
+    --font-size-base: 14px;
+    --font-size-small: 12px;
+    --font-size-large: 16px;
+    --font-size-xlarge: 18px;
+}
+
+[data-font-size="medium"] {
+    --font-size-base: 16px;
+    --font-size-small: 14px;
+    --font-size-large: 18px;
+    --font-size-xlarge: 20px;
+}
+
+[data-font-size="large"] {
+    --font-size-base: 18px;
+    --font-size-small: 16px;
+    --font-size-large: 20px;
+    --font-size-xlarge: 24px;
+}
+
+[data-font-size="xlarge"] {
+    --font-size-base: 20px;
+    --font-size-small: 18px;
+    --font-size-large: 24px;
+    --font-size-xlarge: 28px;
+}
+
+/* ==================== CONTRASTE ==================== */
+[data-contrast="high"] {
+    --text-primary: #000000;
+    --text-secondary: #1f2937;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+[data-mode="night"][data-contrast="high"] {
+    --text-primary: #ffffff;
+    --text-secondary: #f3f4f6;
+    --bg-primary: #000000;
+    --bg-secondary: #1f2937;
+    --bg-card: #374151;
+}
+
+/* ==================== ESTILOS GLOBALES ==================== */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: var(--font-size-base);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 [x-cloak] {
     display: none;
 }
 
+/* Botones con variables CSS */
 .btn {
-    @apply px-3 bg-gray-500 hover:bg-gray-800 rounded text-white uppercase
+    @apply px-3 py-2 rounded text-white uppercase font-semibold transition-all duration-200;
+    background-color: var(--color-primary);
+    font-size: var(--font-size-base);
 }
+
+.btn:hover {
+    background-color: var(--color-primary-dark);
+    box-shadow: var(--shadow-lg);
+}
+
 .btn-primary {
-    @apply px-3 bg-green-500 hover:bg-green-800 
+    background-color: var(--color-primary);
 }
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
 .btn-success {
-    @apply px-3 bg-blue-500 hover:bg-blue-800 
+    background-color: var(--color-secondary);
 }
+
+.btn-success:hover {
+    background-color: var(--color-secondary);
+    filter: brightness(0.9);
+}
+
 .btn-danger {
-    @apply px-3 bg-red-500 hover:bg-red-800 
+    background-color: var(--color-accent);
+}
+
+.btn-danger:hover {
+    background-color: var(--color-accent);
+    filter: brightness(0.9);
+}
+
+/* Cards */
+.card {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-lg);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+/* Texto */
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+/* Links */
+a {
+    color: var(--color-primary);
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
 }

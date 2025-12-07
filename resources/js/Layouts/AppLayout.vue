@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { Head, Link, router, usePage } from '@inertiajs/vue3';
 import ApplicationMark from '@/Components/ApplicationMark.vue';
 import Banner from '@/Components/Banner.vue';
@@ -9,21 +9,29 @@ import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import CartIcon from '@/Components/CartIcon.vue';
 import CartSidebar from '@/Components/CartSidebar.vue';
+import ThemeMenu from '@/Components/ThemeMenu.vue';
+import { useTheme } from '@/Composables/useTheme';
 
 defineProps({
     title: String,
 });
 
 const showingNavigationDropdown = ref(false);
+const { applyTheme, cleanup } = useTheme();
 
 // Debug: Mostrar los roles en la consola
 onMounted(() => {
     const page = usePage();
+    applyTheme();
     console.log('=== DEBUG ROLES ===');
     console.log('Auth:', page.props.auth);
     console.log('User:', page.props.auth?.user);
     console.log('Roles:', page.props.auth?.user?.roles);
     console.log('==================');
+});
+
+onUnmounted(() => {
+    cleanup();
 });
 
 const switchToTeam = (team) => {
@@ -86,7 +94,10 @@ const logout = () => {
                             </div>
                         </div>
 
-                        <div class="hidden sm:flex sm:items-center sm:ms-6">
+                        <div class="hidden sm:flex sm:items-center sm:ms-6 gap-3">
+                            <!-- Menú de Temas -->
+                            <ThemeMenu />
+
                             <!-- Icono del Carrito (solo para clientes) -->
                             <div v-if="$page.props.auth?.user?.roles?.includes('cliente')" class="me-3">
                                 <CartIcon />
