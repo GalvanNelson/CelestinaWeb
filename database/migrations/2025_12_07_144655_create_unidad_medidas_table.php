@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('venta_contado', function (Blueprint $table) {
-            $table->id();
+        Schema::create('unidad_medidas', function (Blueprint $table) {
+            $table->id('codigo_unidad_medida');
+            $table->string('nombre_unidad_medida');
             $table->timestamps();
         });
     }
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('venta_contado');
+        Schema::dropIfExists('unidad_medidas');
     }
 };

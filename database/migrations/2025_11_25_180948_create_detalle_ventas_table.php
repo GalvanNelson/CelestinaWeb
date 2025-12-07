@@ -12,13 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('detalle_ventas', function (Blueprint $table) {           
-            $table->id('codigo_detalle_venta');            
-            $table->integer('cantidad_producto')->nullable();
-            $table->decimal('precio_unitario', 10, 2)->nullable();            
-            $table->decimal('subtotal', 10, 2)->nullable();            
-            $table->unsignedBigInteger('venta_contado')->nullable();            
-            $table->unsignedBigInteger('producto')->nullable();
-            $table->unsignedBigInteger('venta_credito')->nullable();
+            $table->id('codigo_detalle_venta');
+            $table->string('producto');
+            $table->integer('venta');
+            $table->decimal('precio_unitario', 10, 2);            
+            $table->decimal('cantidad', 10, 2);
+            $table->decimal('subtotal', 10, 2);
             $table->timestamps();
         });
     }

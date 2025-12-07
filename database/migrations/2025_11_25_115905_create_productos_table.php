@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('nombre_producto'); 
             $table->string('imagen'); 
             $table->decimal('precio_unitario', 10, 2);             
+            $table->decimal('stock', 10, 2); 
             $table->integer('categoria'); 
-            $table->integer('unidad_medida'); 
-            $table->integer('vendedor');             
+            $table->integer('unidad_medida');             
             $table->timestamps();
         });
     }

@@ -9,7 +9,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 // --- NUEVA RUTA CALLBACK ---
-Route::post('/callbackUrl', function (Request $request) {
+Route::post('/pagofassil', function (Request $request) {
     
     // 1. Validar datos
     $validated = $request->validate([

@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pedidos', function (Blueprint $table) {                        
-            $table->string('PedidoID')->primary();
-            $table->date("Fecha");        
-            $table->time("Hora");    
-            $table->string("MetodoPago");
-            $table->string("Estado");
+        Schema::create('clientes', function (Blueprint $table) {
+            $table->id('codigo_cliente');
+            $table->integer('user_id');
+            $table->string('nombre_cliente');
+            $table->string('cedula_identidad');
+            $table->decimal('limite_credito', 10, 2);
+            $table->decimal('saldo_actual', 10, 2);
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('clientes');
     }
 };
