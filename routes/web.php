@@ -23,7 +23,9 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Dashboard', [
+            'user' => auth()->user()->load('teamUsers'),
+        ]);
     })->name('dashboard');
     //Route::resource('dashboard/user', UserController::class);
 

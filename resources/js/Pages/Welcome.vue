@@ -27,21 +27,21 @@ onUnmounted(() => {
 <template>
     <Head title="Bienvenido" />
     
-    <div class="min-h-screen flex flex-col" style="background-color: var(--bg-primary); color: var(--text-primary);">
+    <div class="min-h-screen flex flex-col bg-bg-primary text-text-primary">
         <!-- Header simple -->
-        <header class="py-6 px-4 md:px-8" style="background-color: var(--bg-card); box-shadow: var(--shadow);">
+        <header class="py-6 px-4 md:px-8 bg-bg-card shadow-base">
             <div class="flex items-center justify-between max-w-6xl mx-auto">
                 <div class="flex items-center gap-3">
-                    <div class="text-white p-2 rounded-lg" style="background-color: var(--color-primary);">
+                    <div class="text-white p-2 rounded-lg bg-color-primary">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
                     </div>
-                    <span class="text-xl font-bold" style="color: var(--color-primary);">Tienda Celestina</span>
+                    <span class="text-xl font-bold text-color-primary">Tienda Celestina</span>
                 </div>
                 <div class="flex items-center gap-4">
-                    <div class="text-sm hidden md:block" style="color: var(--text-secondary);">
+                    <div class="text-sm hidden md:block text-text-secondary">
                         Tu tienda de confianza
                     </div>
                     <ThemeMenu />
@@ -53,10 +53,10 @@ onUnmounted(() => {
         <main class="flex-1 flex items-center justify-center px-4">
             <div class="max-w-md w-full">
                 <!-- Tarjeta de bienvenida -->
-                <div class="rounded-2xl p-8 md:p-10" style="background-color: var(--bg-card); box-shadow: var(--shadow);">
+                <div class="rounded-2xl p-8 md:p-10 bg-bg-card shadow-base">
                     <!-- Logo grande -->
                     <div class="flex justify-center mb-8">
-                        <div class="text-white p-4 rounded-full" style="background-color: var(--color-primary);">
+                        <div class="text-white p-4 rounded-full bg-color-primary">
                             <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
                                       d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
@@ -66,10 +66,10 @@ onUnmounted(() => {
 
                     <!-- Mensaje de bienvenida -->
                     <div class="text-center mb-10">
-                        <h1 class="text-3xl font-bold mb-3" style="color: var(--text-primary);">
+                        <h1 class="text-3xl font-bold mb-3 text-text-primary">
                             Bienvenido a Tienda Celestina
                         </h1>
-                        <p style="color: var(--text-secondary);">
+                        <p class="text-text-secondary">
                             Accede a tu cuenta para comenzar a comprar
                         </p>
                     </div>
@@ -80,8 +80,7 @@ onUnmounted(() => {
                         <Link
                             v-if="canLogin"
                             :href="route('login')"
-                            class="block w-full text-white font-semibold py-4 px-6 rounded-xl transition duration-300 shadow-md hover:shadow-lg text-center hover:opacity-90" 
-                            style="background-color: var(--color-primary);"
+                            class="block w-full text-white font-semibold py-4 px-6 rounded-xl transition duration-300 shadow-md hover:shadow-lg text-center hover:opacity-90 bg-color-primary"
                         >
                             <div class="flex items-center justify-center gap-3">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,8 +95,7 @@ onUnmounted(() => {
                         <Link
                             v-if="canRegister"
                             :href="route('register')"
-                            class="block w-full font-semibold py-4 px-6 rounded-xl transition duration-300 border-2 shadow-sm hover:shadow-md text-center hover:opacity-90" 
-                            style="background-color: var(--bg-card); color: var(--color-primary); border-color: var(--color-primary);"
+                            class="block w-full font-semibold py-4 px-6 rounded-xl transition duration-300 border-2 shadow-sm hover:shadow-md text-center hover:opacity-90 bg-bg-card text-color-primary border-color-primary"
                         >
                             <div class="flex items-center justify-center gap-3">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,12 +107,11 @@ onUnmounted(() => {
                         </Link>
 
                         <!-- Acceso para usuarios ya autenticados -->
-                        <div v-if="$page.props.auth.user" class="text-center pt-6 border-t" style="border-color: var(--bg-secondary);">
-                            <p class="mb-4" style="color: var(--text-secondary);">Ya has iniciado sesión</p>
+                        <div v-if="$page.props.auth.user" class="text-center pt-6 border-t border-bg-secondary">
+                            <p class="mb-4 text-text-secondary">Ya has iniciado sesión</p>
                             <Link
                                 :href="route('dashboard')"
-                                class="inline-block text-white font-semibold py-3 px-6 rounded-lg transition duration-300 hover:opacity-90" 
-                                style="background-color: var(--color-primary);"
+                                class="inline-block text-white font-semibold py-3 px-6 rounded-lg transition duration-300 hover:opacity-90 bg-color-primary"
                             >
                                 Ir al Panel Principal
                             </Link>
@@ -122,8 +119,8 @@ onUnmounted(() => {
                     </div>
 
                     <!-- Texto informativo -->
-                    <div class="mt-10 pt-6 border-t" style="border-color: var(--bg-secondary);">
-                        <div class="text-center text-sm space-y-2" style="color: var(--text-secondary);">
+                    <div class="mt-10 pt-6 border-t border-bg-secondary">
+                        <div class="text-center text-sm space-y-2 text-text-secondary">
                             <p>✨ Productos de calidad</p>
                             <p>🚚 Envíos rápidos</p>
                             <p>💰 Precios competitivos</p>
@@ -132,16 +129,16 @@ onUnmounted(() => {
                 </div>
 
                 <!-- Información adicional pequeña -->
-                <div class="text-center mt-6 text-sm" style="color: var(--text-secondary);">
+                <div class="text-center mt-6 text-sm text-text-secondary">
                     <p>© 2024 Tienda Celestina. Todos los derechos reservados.</p>
                 </div>
             </div>
         </main>
 
         <!-- Footer minimalista -->
-        <footer class="py-6 px-4 text-center text-sm border-t" style="background-color: var(--bg-card); color: var(--text-secondary); border-color: var(--bg-secondary);">
+        <footer class="py-6 px-4 text-center text-sm border-t bg-bg-card text-text-secondary border-bg-secondary">
             <div class="max-w-6xl mx-auto">
-                <p>¿Necesitas ayuda? <a href="#" class="font-medium hover:opacity-70" style="color: var(--color-primary);">Contáctanos</a></p>
+                <p>¿Necesitas ayuda? <a href="#" class="font-medium hover:opacity-70 text-color-primary">Contáctanos</a></p>
             </div>
         </footer>
     </div>

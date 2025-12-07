@@ -71,6 +71,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the team users for this user (relationship to TeamUser).
+     */
+    public function teamUsers()
+    {
+        return $this->hasMany(TeamUser::class);
+    }
+
+    /**
      * Accessor: roles assigned to the user via team memberships.
      * Returns an array of role names like ['propietario', 'vendedor', 'cliente'].
      * This reads from the pivot table 'team_user' to avoid requiring

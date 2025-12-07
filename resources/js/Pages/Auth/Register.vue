@@ -39,7 +39,7 @@ const submit = () => {
 <template>
     <Head title="Register" />
     
-    <div style="background-color: var(--bg-primary); color: var(--text-primary); min-height: 100vh;">
+    <div class="bg-bg-primary text-text-primary min-h-screen">
         <div class="absolute top-4 right-4">
             <ThemeMenu />
         </div>
@@ -108,8 +108,8 @@ const submit = () => {
                     <div class="flex items-center">
                         <Checkbox id="terms" v-model:checked="form.terms" name="terms" required />
 
-                        <div class="ms-2" style="color: var(--text-secondary);">
-                            I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2" :style="{ 'color': 'var(--color-primary)' }">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2" :style="{ 'color': 'var(--color-primary)' }">Privacy Policy</a>
+                        <div class="ms-2 text-text-secondary">
+                            I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 text-color-primary">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 text-color-primary">Privacy Policy</a>
                         </div>
                     </div>
                     <InputError class="mt-2" :message="form.errors.terms" />
@@ -117,7 +117,7 @@ const submit = () => {
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link :href="route('login')" class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2" :style="{ 'color': 'var(--color-primary)' }">
+                <Link :href="route('login')" class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 text-color-primary">
                     Already registered?
                 </Link>
 

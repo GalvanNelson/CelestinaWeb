@@ -17,6 +17,43 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                // Colores de tema
+                primary: 'var(--color-primary)',
+                'primary-dark': 'var(--color-primary-dark)',
+                secondary: 'var(--color-secondary)',
+                accent: 'var(--color-accent)',
+                
+                // Fondos de tema
+                'bg-primary': 'var(--bg-primary)',
+                'bg-secondary': 'var(--bg-secondary)',
+                'bg-card': 'var(--bg-card)',
+                
+                // Textos de tema
+                'text-primary': 'var(--text-primary)',
+                'text-secondary': 'var(--text-secondary)',
+                'text-inverse': 'var(--text-inverse)',
+            },
+            spacing: {
+                'xs': 'var(--spacing-xs)',
+                'sm': 'var(--spacing-sm)',
+                'md': 'var(--spacing-md)',
+                'lg': 'var(--spacing-lg)',
+                'xl': 'var(--spacing-xl)',
+            },
+            borderRadius: {
+                'base': 'var(--border-radius)',
+            },
+            boxShadow: {
+                'base': 'var(--shadow)',
+                'lg': 'var(--shadow-lg)',
+            },
+            fontSize: {
+                'xs': 'var(--font-size-small)',
+                'base': 'var(--font-size-base)',
+                'lg': 'var(--font-size-large)',
+                'xl': 'var(--font-size-xlarge)',
+            },
         },
     },
 

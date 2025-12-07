@@ -45,7 +45,7 @@ const submit = () => {
 <template>
     <Head title="Log in" />
     
-    <div style="background-color: var(--bg-primary); color: var(--text-primary); min-height: 100vh;">
+    <div class="bg-bg-primary text-text-primary min-h-screen">
         <div class="absolute top-4 right-4">
             <ThemeMenu />
         </div>
@@ -55,7 +55,7 @@ const submit = () => {
             <AuthenticationCardLogo />
         </template>
 
-        <div v-if="status" class="mb-4 font-medium text-sm" style="color: #10b981;">
+        <div v-if="status" class="mb-4 font-medium text-sm text-green-500">
             {{ status }}
         </div>
 
@@ -90,12 +90,12 @@ const submit = () => {
             <div class="block mt-4">
                 <label class="flex items-center">
                     <Checkbox v-model:checked="form.remember" name="remember" />
-                    <span class="ms-2 text-sm" style="color: var(--text-secondary);">Remember me</span>
+                    <span class="ms-2 text-sm text-text-secondary">Remember me</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2" :style="{ 'color': 'var(--color-primary)' }">
+                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 text-color-primary">
                     Forgot your password?
                 </Link>
 
