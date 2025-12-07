@@ -1,5 +1,8 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import { onMounted, onUnmounted } from 'vue';
+import ThemeMenu from '@/Components/ThemeMenu.vue';
+import { useTheme } from '@/Composables/useTheme';
 import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
 import Checkbox from '@/Components/Checkbox.vue';
@@ -7,6 +10,16 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+
+const { applyTheme } = useTheme();
+
+onMounted(() => {
+    applyTheme();
+});
+
+onUnmounted(() => {
+    applyTheme();
+});
 
 defineProps({
     canResetPassword: Boolean,
@@ -31,13 +44,18 @@ const submit = () => {
 
 <template>
     <Head title="Log in" />
-
-    <AuthenticationCard>
+    
+    <div style="background-color: var(--bg-primary); color: var(--text-primary); min-height: 100vh;">
+        <div class="absolute top-4 right-4">
+            <ThemeMenu />
+        </div>
+        
+        <AuthenticationCard>
         <template #logo>
             <AuthenticationCardLogo />
         </template>
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+        <div v-if="status" class="mb-4 font-medium text-sm" style="color: #10b981;">
             {{ status }}
         </div>
 
@@ -72,12 +90,12 @@ const submit = () => {
             <div class="block mt-4">
                 <label class="flex items-center">
                     <Checkbox v-model:checked="form.remember" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">Remember me</span>
+                    <span class="ms-2 text-sm" style="color: var(--text-secondary);">Remember me</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2" :style="{ 'color': 'var(--color-primary)' }">
                     Forgot your password?
                 </Link>
 
@@ -86,5 +104,6 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
-    </AuthenticationCard>
+        </AuthenticationCard>
+    </div>
 </template>
